@@ -1,0 +1,34 @@
+.divOne {
+    border: 1px solid red;
+}
+
+.divOne {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+}
+
+.divTwo {
+    display: flex;
+    border: 1px solid black;
+    flex: 1;
+
+}
+
+.divThree {
+    border: 1px solid green;
+    flex: 1;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topButtonDiv {
+    display: flex;
+    justify-content: space-between;
+    background-color: aquamarine;
+}

@@ -4,13 +4,15 @@ const askNum = document.querySelector(".askNum");
 const reset = document.querySelector(".reset");
 const progressive = document.querySelector(".progressive");
 const RGB = document.querySelector(".RGB");
+const topButtonDiv = document.querySelector(".topButtonDiv");
+const buttons = document.querySelectorAll("button")
 
 let rgbIsOn = false;
 let progressiveIsOn = false;
 let NumOfSquare = 16;
 
 divOne.setAttribute("class", "divOne")
-reset.after(divOne)
+topButtonDiv.after(divOne)
 
 function randomRGB() {
     const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min));
@@ -37,11 +39,11 @@ function fillSquare(event) {
 }
 
 function createGrid() {
-    for (let i = 0; i <= NumOfSquare; i++) {
+    for (let i = 0; i < NumOfSquare; i++) {
         const divTwo = document.createElement("div");
         divTwo.setAttribute("class", "divTwo")
         divOne.appendChild(divTwo)
-        for (let n = 0; n <= NumOfSquare; n++) {
+        for (let n = 0; n < NumOfSquare; n++) {
             const divThree = document.createElement("div");
             divThree.setAttribute("class", "divThree")
             divThree.setAttribute("style", "opacity: 0;")
@@ -55,6 +57,7 @@ function removeGrid() {
     while (divOne.lastElementChild) {
         divOne.removeChild(divOne.lastElementChild);
     }
+    createGrid()
 }
 
 askNum.addEventListener("click", () => {
@@ -87,7 +90,20 @@ progressive.addEventListener("click", () => {
 
 reset.addEventListener("click", () => {
     removeGrid()
-    createGrid()
+})
+
+buttons.forEach(button => {
+    button.addEventListener("mouseover", (event) => {
+        event.target.style.color = "#E38E49";
+        event.target.style.fontSize = "#1F509A";
+    })
+})
+
+buttons.forEach(button => {
+    button.addEventListener("mouseout", (event) => {
+        event.target.style.padding = "#1F509A";
+        event.target.style.fontSize = "#E38E49";
+    })
 })
 
 createGrid()
