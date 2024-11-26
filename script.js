@@ -95,14 +95,14 @@ reset.addEventListener("click", () => {
 buttons.forEach(button => {
     button.addEventListener("mouseover", (event) => {
         event.target.style.color = "#E38E49";
-        event.target.style.fontSize = "#1F509A";
+        event.target.style.backgroundColor = "#1F509A";
     })
 })
 
 buttons.forEach(button => {
     button.addEventListener("mouseout", (event) => {
-        event.target.style.padding = "#1F509A";
-        event.target.style.fontSize = "#E38E49";
+        event.target.style.color = "#1F509A";
+        event.target.style.backgroundColor = "#E38E49";
     })
 })
 

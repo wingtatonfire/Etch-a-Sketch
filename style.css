@@ -1,5 +1,5 @@
 .divOne {
-    border: 1px solid red;
+    border: 5px solid #0A3981;
 }
 
 .divOne {
@@ -11,13 +11,11 @@
 
 .divTwo {
     display: flex;
-    border: 1px solid black;
     flex: 1;
 
 }
 
 .divThree {
-    border: 1px solid green;
     flex: 1;
 }
 
@@ -29,6 +27,39 @@
 
 .topButtonDiv {
     display: flex;
-    justify-content: space-between;
-    background-color: aquamarine;
+    width: 400px;
+    justify-content: space-around;
+    margin: 12px;
+}
+
+.bottomButton {
+    display: flex;
+    width: 400px;
+    justify-content: space-around;
+    margin: 12px;
+}
+div {
+}
+
+body {
+    background-color: #D4EBF8;
+}
+
+h1 {
+    color: #1F509A;
+}
+
+button {
+    background-color: #E38E49;
+    border: none;
+    color: #1F509A;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    width: 140px;
+    font-weight: bold;
 }
