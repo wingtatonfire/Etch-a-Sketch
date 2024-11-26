@@ -1,9 +1,41 @@
 const divOne = document.createElement("div");
-divOne.setAttribute("class", "divOne")
 const body = document.querySelector("body");
 const askNum = document.querySelector(".askNum");
-askNum.after(divOne)
-NumOfSquare = 16;
+const reset = document.querySelector(".reset");
+const progressive = document.querySelector(".progressive");
+const RGB = document.querySelector(".RGB");
+
+let rgbIsOn = false;
+let progressiveIsOn = false;
+let NumOfSquare = 16;
+
+divOne.setAttribute("class", "divOne")
+reset.after(divOne)
+
+function randomRGB() {
+    const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min));
+    const r = randomBetween(0, 255);
+    const g = randomBetween(0, 255);
+    const b = randomBetween(0, 255);
+    const rgb = `rgb(${r},${g},${b})`;
+    return rgb
+}
+
+function fillSquare(event) {
+    if (rgbIsOn && event.target.style.opacity === "0") {
+        event.target.style.backgroundColor = randomRGB();
+    } else if (rgbIsOn && event.target.opacity !== "0") {
+
+    } else {
+        event.target.style.backgroundColor = "black";
+    }
+    if (progressiveIsOn) {
+        event.target.style.opacity = parseFloat(event.target.style.opacity) + 0.1;
+    } else {
+        event.target.style.opacity = 1.0;
+    }
+}
+
 function createGrid() {
     for (let i = 0; i <= NumOfSquare; i++) {
         const divTwo = document.createElement("div");
@@ -12,11 +44,16 @@ function createGrid() {
         for (let n = 0; n <= NumOfSquare; n++) {
             const divThree = document.createElement("div");
             divThree.setAttribute("class", "divThree")
-            divThree.addEventListener("mouseover", (event) => {
-                event.target.style.backgroundColor = "black";
-            })
+            divThree.setAttribute("style", "opacity: 0;")
+            divThree.addEventListener("mouseover", (event) => fillSquare(event))
             divTwo.appendChild(divThree)
         }
+    }
+}
+
+function removeGrid() {
+    while (divOne.lastElementChild) {
+        divOne.removeChild(divOne.lastElementChild);
     }
 }
 
@@ -31,4 +68,27 @@ askNum.addEventListener("click", () => {
     NumOfSquare = Number(NumOfSquare);
     createGrid()
 })
+
+RGB.addEventListener("click", () => {
+    if (rgbIsOn) {
+        rgbIsOn = false;
+    } else {
+        rgbIsOn = true;
+    }
+})
+
+progressive.addEventListener("click", () => {
+    if (progressiveIsOn) {
+        progressiveIsOn = false;
+    } else {
+        progressiveIsOn = true;
+    }
+})
+
+reset.addEventListener("click", () => {
+    removeGrid()
+    createGrid()
+})
+
 createGrid()
+
